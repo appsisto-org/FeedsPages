@@ -1,0 +1,58 @@
+<head>
+  <meta name="apple-itunes-app" content="app-id=12345678" />
+  <meta name="google-play-app" content="app-id=com.appsisto.appsistoview" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://res.cloudinary.com/dcejiykxi/raw/upload/v1724074064/smart-app-banner/smart-app-banner.css"
+    type="text/css"
+    media="screen"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://res.cloudinary.com/dcejiykxi/image/upload/v1713283017/tmp-2-1713283017224.png"
+  />
+  <link
+    rel="android-touch-icon"
+    href="https://res.cloudinary.com/dcejiykxi/image/upload/v1713283017/tmp-2-1713283017224.png"
+  />
+</head>
+<body>
+  <script src="https://res.cloudinary.com/dcejiykxi/raw/upload/v1719925041/smart-app-banner/smart-app-banner.js"></script>
+  <script type="text/javascript">
+    const isWebView = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Hledání znaků typických pro webview
+      return (
+        /WebView/.test(userAgent) || // WebView na iOS
+        /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/.test(userAgent) || // WebView na iOS (bez Safari)
+        /wv/.test(userAgent) || // WebView na Androidu
+        /\bVersion\/[\d.]+.*Chrome\/[\d.]+.*Mobile Safari\/[\d.]+/i.test(
+          userAgent
+        )
+      );
+    };
+    if (!isWebView()) {
+      new SmartBanner({
+        daysHidden: 15, // days to hide banner after close button is clicked (defaults to 15)
+        daysReminder: 90, // days to hide banner after "VIEW" button is clicked (defaults to 90)
+        appStoreLanguage: "cs", // language code for the App Store (defaults to user's browser language)
+        title: "AppSistoView",
+        author: "AppSisto",
+        button: "Otevřít",
+        store: {
+          ios: "On the App Store",
+          android: "In Google Play",
+        },
+        price: {
+          ios: "",
+          android: "",
+        },
+        // theme: '' // put platform type ('ios', 'android', etc.) here to force single theme on all devices
+        icon: "https://res.cloudinary.com/dcejiykxi/image/upload/v1713283017/tmp-2-1713283017224.png", // full path to icon image if not using website icon image
+        // force: "ios", // Uncomment for platform emulation
+      });
+    }
+  </script>
+</body>
